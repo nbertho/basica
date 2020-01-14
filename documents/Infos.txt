@@ -1,0 +1,19 @@
+Infos :
+
+Requis : 
+	- Back-Office fonctionnel porpose (backpack, voyager)
+
+Home : 
+	- Travaux mis à l'honneur (slider)
+	- Connexion vers compte Twitter/Facebook
+Porfolio : 
+	Ensemble des projets avec lien du projet
+Blog :
+	Articles + Pagination
+Contact :
+	Google map
+__________________________________________________
+
+Détail d'un projet :
+	Projet similaire : montre les projets similaires (Triés par le plus grand nombre de tag commun)
+
