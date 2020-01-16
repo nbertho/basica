@@ -2,6 +2,7 @@ Infos :
 
 Requis : 
 	- Back-Office fonctionnel porpose (backpack, voyager)
+	- Pied de page dynamique
 
 Home : 
 	- Travaux mis à l'honneur (slider)
