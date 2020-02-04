@@ -11,6 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('template.app');
-});
+// ROUTE PAR DEFAUT
+  Route::get('/', 'PagesController@redirectToPage')->name('default.route');
+
+// ROUTES DES PAGES
+  Route::get('pages/{id}/{slug}.html', 'PagesController@showAction')->name('pages.show');
+
+// ROUTES DES PROJETS
+  Route::get('projet/{id}/{slug}.html', 'ProjetsController@showAction')->name('projets.show');
+
+// ROUTES DES POSTS
+  Route::get('post/{id}/{slug}.html', 'PostsController@showAction')->name('post.show');

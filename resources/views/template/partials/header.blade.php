@@ -1,5 +1,8 @@
 {{--
   templates/partials/header
+
+  Variable : $pages => $page: OBJ(id, titre, slug, sousTitre, texte, tri, created_at, updated_at)
+
 --}}
 
 <header class="navbar navbar-inverse navbar-fixed-top" role="banner">
@@ -11,14 +14,17 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="Basica"></a>
+      <a class="navbar-brand" href="{{ asset('/') }}"><img src="{{ asset('img/logo.png') }}" alt="Basica"></a>
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="index.html">Home</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="contact-us.html">Contact</a></li>
+        <?php
+          $pagesCtrl = new App\Http\Controllers\PagesController;
+          $pagesMenu = $pagesCtrl->index();
+        ?>
+        @foreach ($pagesMenu as $pageMenu)
+          <li><a href="{{ asset('pages/' . $pageMenu->id . '/' . $pageMenu->slug . '.html') }}">{{ $pageMenu->titre }}</a></li>
+        @endforeach
       </ul>
     </div>
   </div>

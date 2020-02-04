@@ -7,5 +7,5 @@ Projet commencé le 14/01/2020 et à rendre pour le 11/02/2020
 Le template est fournis (CSS, HTML et JavaScript)
 ### Liste des taches à faire
 - [X]  Créer la base de donnée
-- [ ]  Réaliser le développement dynamique du site
+- [X]  Réaliser le développement dynamique du site
 - [ ]  Réaliser le back-office

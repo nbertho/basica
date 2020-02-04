@@ -5,29 +5,33 @@
 <div class="footer">
   <div class="container">
     <div class="row">
-      <div class="col-footer col-md-4 col-xs-6">
-        <h3>Contact Us</h3>
-        <p class="contact-us-details">
-          <b>Address:</b> 123 Downtown Avenue, Manhattan, New York, United States of America<br/>
-          <b>Phone:</b> +1 123 45678910<br/>
-          <b>Fax:</b> +1 123 45678910<br/>
-          <b>Email:</b> <a href="mailto:info@yourcompanydomain.com">info@yourcompanydomain.com</a>
-        </p>
-      </div>
-      <div class="col-footer col-md-4 col-xs-6">
-        <h3>Our Social Networks</h3>
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.</p>
-        <div>
-          <img src="{{ asset('img/icons/facebook.png') }}" width="32" alt="Facebook">
-          <img src="{{ asset('img/icons/twitter.png') }}" width="32" alt="Twitter">
-          <img src="{{ asset('img/icons/linkedin.png') }}" width="32" alt="LinkedIn">
-          <img src="{{ asset('img/icons/rss.png') }}" width="32" alt="RSS Feed">
+
+
+      <?php
+        $footerPostsCtrl = new App\Http\Controllers\PostsController;
+        $footerPosts = $footerPostsCtrl->findFooterPosts();
+        $i = 0;
+      ?>
+
+      @foreach ($footerPosts as $footerPost)
+
+        <div class="col-footer col-md-4 col-xs-6">
+          <h3>{{ $footerPost->titre }}</h3>
+          {!! html_entity_decode($footerPost->texte) !!}
+          @if ($footerPost->id == 2)
+            <div>
+              <img src="{{ asset('img/icons/facebook.png') }}" width="32" alt="Facebook">
+              <img src="{{ asset('img/icons/twitter.png') }}" width="32" alt="Twitter">
+              <img src="{{ asset('img/icons/linkedin.png') }}" width="32" alt="LinkedIn">
+              <img src="{{ asset('img/icons/rss.png') }}" width="32" alt="RSS Feed">
+            </div>
+          @endif
         </div>
-      </div>
-      <div class="col-footer col-md-4 col-xs-6">
-        <h3>About Our Company</h3>
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci.</p>
-      </div>
+        <?php $i++ ?>
+      @endforeach
+
+
+
     </div>
     <div class="row">
       <div class="col-md-12">
