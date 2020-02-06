@@ -3,6 +3,7 @@
 --}}
 
 <div class="footer">
+
   <div class="container">
     <div class="row">
 
@@ -21,9 +22,9 @@
           @if ($footerPost->id == 2)
             <div>
               <img src="{{ asset('img/icons/facebook.png') }}" width="32" alt="Facebook">
-              <img src="{{ asset('img/icons/twitter.png') }}" width="32" alt="Twitter">
+              <a href="https://twitter.com/BerthoWeb"><img src="{{ asset('img/icons/twitter.png') }}" width="32" alt="Twitter"></a>
               <img src="{{ asset('img/icons/linkedin.png') }}" width="32" alt="LinkedIn">
-              <img src="{{ asset('img/icons/rss.png') }}" width="32" alt="RSS Feed">
+              <a href="{{ asset('feed.xml') }}"><img src="{{ asset('img/icons/rss.png') }}" width="32" alt="RSS Feed"></a>
             </div>
           @endif
         </div>

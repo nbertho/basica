@@ -22,3 +22,6 @@
 
 // ROUTES DES POSTS
   Route::get('post/{id}/{slug}.html', 'PostsController@showAction')->name('post.show');
+
+// ROUTE RSS
+  Route::get('/feed.xml', 'PostsController@feedRss')->name('rss.feed');

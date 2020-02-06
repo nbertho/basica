@@ -21,6 +21,11 @@ class PostsController extends Controller {
     return $posts;
   }
 
+  public function feedRss() {
+    $data = PostsMdl::orderBy('created_at', 'DESC')->where('categories_id', '!=', 1)->get();
+    return response()->view('rss.feed', compact('data'))->header('Content-Type', 'text/xml');
+  }
+
   public function showAction($id) {
     $post = PostsMdl::find($id);
     return View::make('posts.show',compact('post'));
