@@ -1,6 +1,6 @@
 {{--
 
-  Variable : $page: OBJ(id, titre, slug, sousTitre, texte, tri, created_at, updated_at)
+  Détails de la page d'accueil (id = 1)
 
 --}}
 <?php
@@ -10,23 +10,33 @@
 
 <section id="main-slider" class="no-margin">
   <div class="carousel slide">
-    <ol class="carousel-indicators">
-      <li data-target="#main-slider" data-slide-to="0" class="active"></li>
-      <li data-target="#main-slider" data-slide-to="1"></li>
-      <li data-target="#main-slider" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
       <?php
         $projetsCtrl = new App\Http\Controllers\ProjetsController;
         $projetsSlider = $projetsCtrl->findHighlighted();
+        $iCarousel = count($projetsSlider);
+        $carousel = 0;
         $i = 0;
       ?>
+    <ol class="carousel-indicators">
+      <?php
+        while ($carousel < $iCarousel) {
+          if ($carousel == 0) {
+            echo '<li data-target="#main-slider" data-slide-to="0" class="active"></li>';
+          }
+          else {
+            echo '<li data-target="#main-slider" data-slide-to="' . $carousel . '"></li>';
+          }
+          $carousel++;
+        };
+      ?>
+    </ol>
+    <div class="carousel-inner">
       @foreach ($projetsSlider as $projetSlider)
         @if ($i === 0)
-          <div class="item active" style="background-image: url({{ asset('img/portfolio/' . $projetSlider->image . '.jpg') }})">
+          <div class="item active" style="background-image: url({{ asset('uploads/' . $projetSlider->image) }})">
           <?php $i = 1; ?>
         @else
-          <div class="item" style="background-image: url({{ asset('img/portfolio/' . $projetSlider->image . '.jpg') }})">
+          <div class="item" style="background-image: url({{ asset('uploads/' .  $projetSlider->image) }})">
         @endif
           <div class="container">
             <div class="row">
@@ -77,7 +87,7 @@
         @foreach ($notHighlightedprojets as $notHighlightedprojet)
           <div class="col-md-4 col-sm-6">
             <figure>
-              <img src="{{ asset('img/portfolio/' . $notHighlightedprojet->image . '.jpg') }}" alt="{{ $notHighlightedprojet->nom }}">
+              <img src="{{ asset('uploads/' .  $notHighlightedprojet->image) }}" alt="{{ $notHighlightedprojet->nom }}">
               <figcaption>
                 <h3>{{ $notHighlightedprojet->nom }}</h3>
                 <span>
@@ -113,7 +123,7 @@
         ?>
         @foreach($lastPosts as $lastPost)
           <div class="row">
-            <div class="col-xs-4"><a href="blog-post.html"><img src="{{ asset('img/blog/' . $lastPost->image . '.jpg') }}" alt="{{ $lastPost->titre }}"></a></div>
+            <div class="col-xs-4"><a href="blog-post.html"><img src="{{ asset('uploads/' .  $lastPost->image) }}" alt="{{ $lastPost->titre }}"></a></div>
             <div class="col-xs-8">
               <div class="caption"><a href="blog-post.html">{{ $lastPost->titre }}</a></div>
               <div class="date"><?php Helper::dateFr($lastPost->created_at); ?></div>

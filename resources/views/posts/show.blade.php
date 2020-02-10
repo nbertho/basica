@@ -1,6 +1,6 @@
 {{--
 
-  Variable : $post (id, titre, slug, texte, image, created_at, updated_at, categories_id)
+  Variable : $post : OBJ(id, titre, slug, texte, image, created_at, updated_at, categories_id)
 
 --}}
 <?php
@@ -35,7 +35,7 @@
           </div>
 
           <div class="single-post-image">
-            <img src="{{ asset('img/blog/' . $post->image . '.jpg') }}" alt="Post Title">
+            <img src="{{ asset('uploads/' .  $post->image) }}" alt="Post Title">
           </div>
           <div class="single-post-info">
             <i class="glyphicon glyphicon-time"></i><?php Helper::dateFr($post->created_at); ?> <a href="#" title="Show Comments"><i class="glyphicon glyphicon-comment"></i>11</a>
@@ -66,7 +66,7 @@
             $categories = $categoriesCtrl->index()
           ?>
           @foreach($categories as $categorie)
-            <li><a href="#">{{ $categorie->nom }}</a></li>
+            <li><a href="{{ asset('categorie/' . $categorie->id . '/' . $categorie->slug . '.html') }}">{{ $categorie->nom }}</a></li>
           @endforeach
         </ul>
       </div>

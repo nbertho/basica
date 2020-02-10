@@ -31,7 +31,7 @@
       <!-- Product Image & Available Colors -->
       <div class="col-sm-6">
         <div class="product-image-large">
-          <img src="{{ asset('img/portfolio/' . $projet->image . '.jpg' ) }}" alt="{{ $projet->nom }}">
+          <img src="{{ asset('uploads/' .  $projet->image) }}" alt="{{ $projet->nom }}">
         </div>
         <div class="colors">
           <span class="color-white"></span>
@@ -101,7 +101,7 @@
           ?>
           <div class="col-md-3 col-sm-6">
             <figure>
-              <img src="{{ asset('img/portfolio/' . $singleProjet->image . '.jpg') }}" alt="img04">
+              <img src="{{ asset('uploads/' .  $singleProjet->image) }}" alt="img04">
               <figcaption>
                 <h3>{{ $singleProjet->nom }}</h3>
                 <span>

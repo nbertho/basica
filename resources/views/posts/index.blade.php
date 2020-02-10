@@ -1,10 +1,10 @@
 {{--
 
-  Variable : $post: OBJ(id, titre, slug, texte, image, created_at, updated_at, categories_id)
+  Variable : $posts: ARRAY( OBJ(id, titre, slug, texte, image, created_at, updated_at, categories_id))
 
 --}}
 <?php
-  use Illuminate\Support\Str;
+  use App\Helpers\Helper;
 ?>
 
 <div class="section">
@@ -24,7 +24,7 @@
             </div>
 
             <div class="single-post-image">
-              <img src="{{ asset('img/blog/' . $post->image . '.jpg') }}" alt="Post Title">
+              <img src="{{ asset('uploads/' .  $post->image) }}" alt="Post Title">
             </div>
 
             <div class="single-post-info">
@@ -34,7 +34,7 @@
             <div class="single-post-content">
               <p>
                 <?php
-                  $textePost = Str::limit(html_entity_decode($post->texte), 200);
+                  $textePost = Helper::limitText('w', 30, html_entity_decode($post->texte));
                   echo $textePost;
                 ?>
               </p>

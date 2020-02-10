@@ -1,7 +1,7 @@
 {{--
 
   Variable :  $page: OBJ(id, titre, slug, sousTitre, texte, tri, created_at, updated_at)
-              $projet (id, nom, slug, texte, image, mise_en_avant, created_at, updated_at, clients_id)
+              $projet$ Array( OBJ (id, nom, slug, texte, image, mise_en_avant, created_at, updated_at, clients_id))
 
 --}}
 <?php
@@ -38,7 +38,7 @@
         @foreach ($projets as $projet)
           <div class="col-md-4 col-sm-6">
             <figure>
-              <img src="{{ asset('img/portfolio/' . $projet->image . '.jpg') }}" alt="img04">
+              <img src="{{ asset('uploads/' .  $projet->image) }}" alt="img04">
               <figcaption>
                 <h3>{{ $projet->nom }}</h3>
                 <span>

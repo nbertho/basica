@@ -1,5 +1,7 @@
 {{--
 
+  Détails de la page de contact (id = 4)
+
   Variable : $page: OBJ(id, titre, slug, sousTitre, texte, tri, created_at, updated_at)
 
 --}}

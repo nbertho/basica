@@ -5,19 +5,21 @@ class Helper {
 
   /**
    * Fonction pour vérifier que le Helper est bien chargé
-   * @return [type] [  echo "La Class Helper est bien chargée"]
+   * @return string [  echo "La Class Helper est bien chargée"]
    */
   public static function test() {
     echo "La Class Helper est bien chargée";
   }
 
   /**
-   * [limitText description]
+   * [Decoupe le texte apres $nmbr de mots ou de characteres]
+   * 
    * @param  string $type [type de limite (mot : w,W,m,M ou lettres : c,C,l,L)]
    * @param  int    $nmbr [limite de mot/lettre à prendre]
    * @param  string $data [chaine de charactères à couper]
    * @param  string $end [charactères à ajouter à la fin]
-   * @return [type]       [retourne le texte découpé]
+   * 
+   * @return string       [retourne le texte découpé]
    */
   public static function limitText(string $type, int $nmbr, string $data, string $end = " ... ") {
     $data = str_replace(['<h1>', '</h1>', '<h2>', '</h2>', '<h3>', '</h3>', '<h4>', '</h4>', '<p>', '</p>',] , "" , $data );
@@ -37,10 +39,12 @@ class Helper {
 
   /**
    * Retourne la date au format jour - mois - année avec le mois en français
-   * @param  [type] $data [date format datetime]
-   * @return [type]       [echo : jour mois(vf) année]
+   * 
+   * @param  string $data [date format datetime]
+   * 
+   * @return string       [echo : jour mois(vf) année]
    */
-  public static function dateFr($data) {
+  public static function dateFr(string $data) {
     $dataSplit = explode("-", $data);
     $year = $dataSplit[0];
     $month = $dataSplit[1];

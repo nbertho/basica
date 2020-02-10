@@ -1,8 +1,5 @@
 {{--
   templates/partials/header
-
-  Variable : $pages => $page: OBJ(id, titre, slug, sousTitre, texte, tri, created_at, updated_at)
-
 --}}
 
 <header class="navbar navbar-inverse navbar-fixed-top" role="banner">

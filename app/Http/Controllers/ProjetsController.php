@@ -6,37 +6,82 @@ use Illuminate\Support\Facades\DB;
 
 class ProjetsController extends Controller {
 
+  /**
+   * Renvois les données de toutes les projets
+   *
+   * @return  array     Tableau contenant des objets avec les données des projets
+   */
   public function index() {
     $projets = ProjetsMdl::all();
     return $posts;
   }
 
-  public function find($limit) {
+  /**
+   * Renvois les données d'un certain nombre de projets trié par date de création décroissante
+   *
+   * @param   int  $limit    Nombre de projet a renvoyer
+   *
+   * @return  array          Tableau contenant des objets avec les données des projets
+   */
+  public function find( int $limit) {
     $projets = ProjetsMdl::all()->take($limit);
     return $projets;
   }
 
-  public function findOne($id) {
+  /**
+   * Renvois les données du projet $id
+   *
+   * @param   int  $id  id du projet a renvoyer
+   *
+   * @return  obj       Objet contenant les données du projet $id
+   */
+  public function findOne( int $id) {
     $projets = ProjetsMdl::find($id);
     return $projets;
   }
 
+  /**
+   * Renvois les données des projets mis en avant (mise_en_avant = 1)
+   *
+   * @return  array          Tableau contenant des objets avec les données des projets
+   */
   public function findHighlighted() {
     $projets = ProjetsMdl::all()->where('mise_en_avant', '=', 1);
     return $projets;
   }
 
-  public function findNotHighlighted($limit) {
-    $projets = ProjetsMdl::all()->where('mise_en_avant', '!=', 1)->take($limit);
+  /**
+   * Renvois un certain nombre ($limit) de projets n'étannt pas mis en avant (mise_en_avant != 1)
+   *
+   * @param   int  $limit  nombre de projets à renvoyer
+   *
+   * @return  array          Tableau contenant des objets avec les données des projets
+   */
+  public function findNotHighlighted( int $limit) {
+    $projets = ProjetsMdl::orderBy('created_at', 'DESC')->where('mise_en_avant', '!=', 1)->take($limit)->get();
     return $projets;
   }
 
-  public function showAction($id) {
+  /**
+   * Affiche le projet $id
+   *
+   * @param   int  $id   id du projet à renvoyer
+   *
+   * @return  view       Renvois la variable $projet vers la vue projets.show
+   */
+  public function showAction( int $id) {
     $projet = ProjetsMdl::find($id);
     return View::make('projets.show',compact('projet'));
   }
 
-  public function findRelated($id) {
+  /**
+   * Affiche les projets ayant des tags similaires
+   *
+   * @param   int  $id  id du projet
+   *
+   * @return  array          Tableau contenant des objets avec les données des projets
+   */
+  public function findRelated( int $id) {
     // Créations de tableau vide
       $tagsId = [];
       $projetsArray = [];
@@ -56,7 +101,7 @@ class ProjetsController extends Controller {
     // On trie en fonction du nombre d'occurences
       $projetsIdArray = array_count_values($projetsArray);
       arsort($projetsIdArray);
-    // On retourne les 3 id de projetsz retenues
+    // On retourne les 4 id de projets retenues
       $similarProjetId = array_keys($projetsIdArray);
       $similarProjetId = array_slice($similarProjetId, 0, 4);
       return $similarProjetId;

@@ -1,5 +1,7 @@
 {{--
 
+  Vues des pages
+
   Variable : $page: OBJ(id, titre, slug, sous_titre, texte, tri, created_at, updated_at)
 
 --}}

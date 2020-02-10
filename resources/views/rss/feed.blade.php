@@ -1,10 +1,9 @@
 <?php
   echo '<?xml version="1.0"?>';
-  use App\Helpers\Helper;
 ?>
 {{--
 
-  Variable : $post: OBJ(id, titre, slug, texte, image, created_at, updated_at, categories_id)
+  Variable : $data: ARRAY( OBJ(id, titre, slug, texte, image, created_at, updated_at, categories_id))
 
 --}}
 

@@ -9,7 +9,7 @@ $(function() {
     else if (pathPage.includes('public/pages/2') || pathPage.includes('public/projet')) {
       pageId = 1;
     }
-    else if (pathPage.includes('public/pages/3') || pathPage.includes('public/post')) {
+    else if (pathPage.includes('public/pages/3') || pathPage.includes('public/post') || pathPage.includes('public/categorie')) {
       pageId = 2;
     }
     else if (pathPage.includes('public/pages/4')) {

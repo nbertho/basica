@@ -8,4 +8,4 @@ Le template est fournis (CSS, HTML et JavaScript)
 ### Liste des taches à faire
 - [X]  Créer la base de donnée
 - [X]  Réaliser le développement dynamique du site
-- [ ]  Réaliser le back-office
+- [X]  Réaliser le back-office
